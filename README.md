@@ -1,7 +1,7 @@
 # compuational-physics-N2014301510094
 #Homework list
 #[Exercise-02](https://www.zybuluo.com/lhd2014/note/504825)
-#[Exercise-03]()
+#[Exercise-03](https://www.zybuluo.com/lhd2014/note/513011)
 #[Exercise-04]()
 #[Exercise-05]()
 #[Exercise-06]()
