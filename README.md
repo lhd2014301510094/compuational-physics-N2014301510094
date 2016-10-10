@@ -2,7 +2,7 @@
 #Homework list
 #[Exercise-02](https://www.zybuluo.com/lhd2014/note/504825)
 #[Exercise-03](https://www.zybuluo.com/lhd2014/note/513011)
-#[Exercise-04]()
+#[Exercise-04](https://www.zybuluo.com/lhd2014/note/525968)
 #[Exercise-05]()
 #[Exercise-06]()
 #[Exercise-07]()
