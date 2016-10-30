@@ -5,7 +5,7 @@
 #[Exercise-04](https://www.zybuluo.com/lhd2014/note/525968)
 #[Exercise-05](https://www.zybuluo.com/lhd2014/note/534039)
 #[Exercise-06](https://www.zybuluo.com/lhd2014/note/542124)
-#[Exercise-07]()
+#[Exercise-07](https://www.zybuluo.com/lhd2014/note/550278)
 #[Exercise-08]()
 #[Exercise-09]()
 #[Exercise-10]()
