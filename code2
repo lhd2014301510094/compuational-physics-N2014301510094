@@ -19,7 +19,7 @@ class kepler_laws:
     def show(self):
 
         pl.plot(self.x, self.y)
-        pl.title('Earth orbiting the Sun')
+        pl.title('The Solar System')
         pl.xlabel('x(AU)')
         pl.ylabel('y(AU)')
         pl.xlim(-35,35)
