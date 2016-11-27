@@ -8,7 +8,7 @@
 #[Exercise-07](https://www.zybuluo.com/lhd2014/note/550278)
 #[Exercise-08](https://www.zybuluo.com/lhd2014/note/565410)
 #[Exercise-09](https://www.zybuluo.com/lhd2014/note/565406)
-#[Exercise-10]()
+#[Exercise-10](https://www.zybuluo.com/lhd2014/note/581435)
 #[Exercise-11]()
 #[Exercise-12]()
 #[Exercise-13]()
