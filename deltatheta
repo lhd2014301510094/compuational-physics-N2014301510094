@@ -59,7 +59,7 @@ class kepler_laws:
         pl.ylabel('$\Delta$$\Theta$(radians/yr)')
         #pl.scatter([0],[0],s=100,color='red')
         pl.xlim(0,10)
-        pl.ylim(0,02)
+        pl.ylim(0,0.02)
         #pl.text(self.x[-20], self.y[0],'Circular orbit', fontdict = font)
         pl.show()
 a=kepler_laws()
