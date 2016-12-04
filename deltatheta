@@ -1,0 +1,67 @@
+import pylab as pl
+import numpy as np
+import math
+class kepler_laws:
+    def __init__(self, time_step=0.0001, initial_x=1, initial_y=0, initial_r=1,  initial_vy=2*math.pi, initial_theta_1=0.01, initial_omiga=0,   initial_theta_2=0,):
+        self.dt=time_step
+        self.x_1=[initial_x]
+        self.y_1=[initial_y]
+        self.vx_1=[0]
+        self.vy_1=[initial_vy]
+        self.r_1=[initial_r]
+        self.th_1=[initial_theta_1]
+        self.w_1=[initial_omiga]
+        self.x_2=[initial_x]
+        self.y_2=[initial_y]
+        self.vx_2=[0]
+        self.vy_2=[initial_vy]
+        self.r_2=[initial_r]
+        self.th_2=[initial_theta_2]
+        self.w_2=[initial_omiga]
+        self.t=[0]
+        self.d_theta=[abs(0.01-0)]
+    def run(self):
+        for i in range(100000):
+            self.r_1.append(np.sqrt(self.x_1[-1]**2+self.y_1[-1]**2))
+            self.vx_1.append(self.vx_1[-1]-4*math.pi**2*self.x_1[-1]*self.dt/(self.r_1[-1]**3))
+            self.x_1.append(self.x_1[-1]+self.vx_1[-1]*self.dt)
+            self.vy_1.append(self.vy_1[-1]-4*math.pi**2*self.y_1[-1]*self.dt/(self.r_1[-1]**3))
+            self.y_1.append(self.y_1[-1]+self.vy_1[-1]*self.dt)
+            self.w_1.append(self.w_1[-1]-(12*math.pi**2*(self.x_1[-1]*math.sin(self.th_1[-1])-self.y_1[-1]*math.cos(self.th_1[-1]))*(self.x_1[-1]*math.cos(self.th_1[-1])+self.y_1[-1]*math.sin(self.th_1[-1]))/self.r_1[-1]**5)*self.dt)
+            self.th_1.append(self.th_1[-1]+self.w_1[-1]*self.dt)
+            if self.th_1[-1] > math.pi:
+                self.th_1[-1] = self.th_1[-1] -2 * math.pi
+            elif self.th_1[-1] < -math.pi:
+                    self.th_1[-1] = self.th_1[-1] +2 * math.pi
+            else:
+                pass
+            self.r_2.append(np.sqrt(self.x_2[-1]**2+self.y_2[-1]**2))
+            self.vx_2.append(self.vx_2[-1]-4*math.pi**2*self.x_2[-1]*self.dt/(self.r_2[-1]**3))
+            self.x_2.append(self.x_2[-1]+self.vx_2[-1]*self.dt)
+            self.vy_2.append(self.vy_2[-1]-4*math.pi**2*self.y_2[-1]*self.dt/(self.r_2[-1]**3))
+            self.y_2.append(self.y_2[-1]+self.vy_2[-1]*self.dt)
+            self.w_2.append(self.w_2[-1]-(12*math.pi**2*(self.x_2[-1]*math.sin(self.th_2[-1])-self.y_2[-1]*math.cos(self.th_2[-1]))*(self.x_2[-1]*math.cos(self.th_2[-1])+self.y_2[-1]*math.sin(self.th_2[-1]))/self.r_2[-1]**5)*self.dt)
+            self.th_2.append(self.th_2[-1]+self.w_2[-1]*self.dt)
+            if self.th_2[-1] > math.pi:
+                self.th_2[-1] = self.th_2[-1] -2 * math.pi
+            elif self.th_2[-1] < -math.pi:
+                    self.th_2[-1] = self.th_2[-1] +2 * math.pi
+            else:
+                pass
+            self.t.append(self.t[-1]+self.dt)
+            self.d_theta.append(abs(self.th_1[-1]-self.th_2[-2]))
+    def show(self):
+        #font = {'family': 'serif','color':  'darkred','weight': 'normal','size': 16,}
+        #pl.figure(figsize=(35,35))
+        pl.plot(self.t,  self.d_theta)
+        pl.title('Hyperion $\Delta$$\Theta$ versus time')
+        pl.xlabel('time(yr)')
+        pl.ylabel('$\Delta$$\Theta$(radians/yr)')
+        #pl.scatter([0],[0],s=100,color='red')
+        pl.xlim(0,10)
+        pl.ylim(0,02)
+        #pl.text(self.x[-20], self.y[0],'Circular orbit', fontdict = font)
+        pl.show()
+a=kepler_laws()
+a.run()
+a.show()
