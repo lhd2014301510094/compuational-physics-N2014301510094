@@ -10,7 +10,7 @@
 #[Exercise-09](https://www.zybuluo.com/lhd2014/note/565406)
 #[Exercise-10](https://www.zybuluo.com/lhd2014/note/581435)
 #[Exercise-11](https://www.zybuluo.com/lhd2014/note/589641)
-#[Exercise-12]()
+#[Exercise-12](https://www.zybuluo.com/lhd2014/note/597617)
 #[Exercise-13]()
 #[Exercise-14]()
 #[Final Project]()
