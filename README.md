@@ -12,6 +12,5 @@
 #[Exercise-11](https://www.zybuluo.com/lhd2014/note/589641)
 #[Exercise-12](https://www.zybuluo.com/lhd2014/note/597617)
 #[Exercise-13](https://www.zybuluo.com/lhd2014/note/604731)
-#[Exercise-14]()
 #[Final Project]()
 
