@@ -1,0 +1,56 @@
+import pylab as pl
+import numpy as np
+class random_walk:
+    def __init__(self, ):
+        self.x=np.zeros(500)
+        self.x_mean=[0]
+        self.y=[0]
+        self.x2=np.zeros(500)
+        self.x2_mean=[0]
+        self.z1=0
+        self.p1=0
+        self.ycals=0
+    def run(self):
+        for i in range(100):
+            for j in range(500):
+                rnd=np.random.uniform(0,1)
+                rndl=np.random.uniform(0,1)
+                if rnd>0.25:
+                    self.x[j]=self.x[j]+rndl 
+                elif rnd<0.25:
+                    self.x[j]=self.x[j]-rndl
+                else:
+                    pass
+                self.x2[j]=self.x[j]**2
+            self.x_mean.append(sum(self.x)/500)
+            self.x2_mean.append(sum(self.x2)/500)
+            #self.x[1]=sum(self.x)/500
+            #del self.x2[:]
+            self.y.append(self.y[i]+1)
+        self.z1=np.polyfit(self.y,self.x2_mean,2)
+        self.p1=np.poly1d(self.z1)
+        self.yvals=np.polyval(self.z1,self.y)    
+    def show(self):
+        #pl.figure(figsize=[8,4])
+        pl.subplot(1,2,1)
+        pl.plot(self.y,self.x_mean,'.')
+        pl.title('Random walk in one dimension')
+        pl.xlabel('step number')
+        pl.ylabel('x')
+        pl.grid(True)
+        pl.subplot(1,2,2)
+        pl.plot(self.y,self.x2_mean,'.')
+        pl.plot(self.y,self.yvals,label='Fit line')
+        pl.title('Random walk in one dimension')
+        pl.text(10,80,'<x^2>versus time')
+        pl.xlabel('step number(=time)')
+        pl.ylabel('<x^2>')
+        pl.grid(True)
+a=random_walk()
+a.run()
+a.show()
+b=random_walk()
+b.run()
+b.show()
+#pl.figure(figsize=[8,4])
+pl.show
