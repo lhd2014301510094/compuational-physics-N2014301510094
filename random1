@@ -1,0 +1,44 @@
+import pylab as pl
+import numpy as np
+class random_walk:
+    def __init__(self, x=0,y=0,z=0):
+        self.x=[x]
+        self.y=[y]
+        self.x2=[z]
+        self.x2_mean=[0]
+    def run(self):
+        for i in range(100):
+            rnd=np.random.uniform(0,1)
+            if rnd>0.5:
+                self.x.append(self.x[i]+1)
+                
+            elif rnd<0.5:
+                self.x.append(self.x[i]-1)
+
+            else:
+                pass
+            self.y.append(self.y[i]+1)
+            self.x2.append(self.x[i+1]**2)
+            self.x2_mean.append(sum(self.x2)/(i+1))
+    def show(self):
+        #pl.figure(figsize=[8,4])
+        pl.subplot(1,2,1)
+        pl.plot(self.y,self.x)
+        pl.title('Random walk in one dimension')
+        pl.xlabel('step number')
+        pl.ylabel('x')
+        pl.subplot(1,2,2)
+        pl.plot(self.y,self.x2_mean)
+        pl.title('Random walk in one dimension')
+        pl.xlabel('step number(=time)')
+        pl.ylabel('<x^2>')
+a=random_walk()
+a.run()
+a.show()
+pl.grid(True)
+b=random_walk()
+b.run()
+b.show()
+pl.grid(True)
+#pl.figure(figsize=[8,4])
+pl.show
