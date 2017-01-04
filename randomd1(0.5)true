@@ -1,0 +1,45 @@
+import pylab as pl
+import numpy as np 
+N=101
+class random_walk:
+ 	def __init__(self,step):
+            self.d=1/4
+            self.step=step
+            self.p=np.linspace(0,0,N)
+            self.x=np.linspace(-50,50,N)
+            self.p_new=np.linspace(0,0,N)
+            self.p[50]=0.5
+ 	def run(self):
+          for i in range(N):
+                self.p_new[i]=self.p[i]
+          for j in range(1,N-1):
+                self.p[j]=self.p_new[j]+self.d*(self.p_new[j+1]+self.p_new[j-1]-2*self.p_new[j])
+ 	def show(self):
+          for i in range(self.step):
+                self.run()
+          pl.plot(self.x,self.p,label="t="+str(self.step/0.5)+"$\Delta$t")
+          pl.title('Difusion in one dimension')
+          pl.xlabel('x')
+          pl.xlim(-50,50)
+          pl.ylabel('density')
+          pl.grid(True)
+a=random_walk(0)
+a.run
+a.show()
+b=random_walk(5)
+b.run
+b.show()
+c=random_walk(50)
+c.run
+c.show()
+d=random_walk(100)
+d.run
+d.show()
+e=random_walk(500)
+e.run
+e.show()
+f=random_walk(1000)
+f.run
+f.show()
+pl.legend(loc="best")
+pl.show()
