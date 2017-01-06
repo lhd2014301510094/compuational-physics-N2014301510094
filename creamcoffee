@@ -1,0 +1,52 @@
+import numpy as np
+import matplotlib.pyplot as pl
+N=100
+L=1
+class random_walk:
+    def __init__(self,step):
+        self.t=step
+        self.x=[]
+        self.y=[]
+        self.a=[]
+        self.b=[]
+        self.list=[[0 for i in range(N)] for j in range(N)]
+        for i in range(N):
+            for j in range(N):
+                self.list[i][j]=self.list[i][j]+95+j/10
+            self.list[i][j]=self.list[i][j]+i/10
+    def random(self):
+        for i in range(N):
+            for j in range(N):
+                rnd=np.random.uniform(0,1)
+                if rnd>0.5:
+                    self.list[i][j]=self.list[i][j]+L
+                elif rnd<0.5:
+                    self.list[i][j]=self.list[i][j]-L
+                else:
+                    pass
+
+    def run(self):
+        for t in range(self.t):
+            self.random()
+        for i in range(N):
+            for j in range(N-1):
+                self.b.append(self.list[i][j])
+            self.x.append(self.b)
+        for i in range(N):
+            for j in range(N-1):
+                self.a.append(self.list[0][i])
+            self.y.append(self.a)
+    def show(self):
+        pl.plot(self.x,self.y,'.b')
+        
+a=random_walk(step=10)
+a.random()
+a.run()
+a.show()
+pl.xlim(0,200)
+pl.ylim(0,200)
+pl.xlabel('x')
+pl.ylabel('y')
+pl.title('Cream in coffee')
+pl.grid(True)
+pl.show
