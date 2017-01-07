@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as pl
-N=50
+N=101
 L=1
 class random_walk:
     def __init__(self,step):
@@ -9,7 +9,7 @@ class random_walk:
         self.y=[]
         self.a=[]
         self.b=[]
-        self.list=[[0 for i in range(N)] for j in range(N)]
+        self.list=[[0 for i in range(N)] for j in range(N)]#(N-1)阶数组
         for i in range(N):
             for j in range(N):
                 self.list[i][j]=self.list[i][j]+95+j/10
@@ -39,7 +39,7 @@ class random_walk:
     def show(self):
         pl.plot(self.x,self.y,'.b')
         
-a=random_walk(step=100)
+a=random_walk(step=0)#已运行了一次def random()
 a.random()
 a.run()
 a.show()
@@ -50,3 +50,4 @@ pl.ylabel('y')
 pl.title('Cream in coffee')
 pl.grid(True)
 pl.show
+
