@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as pl
-N=100
+N=50
 L=1
 class random_walk:
     def __init__(self,step):
@@ -28,18 +28,18 @@ class random_walk:
     def run(self):
         for t in range(self.t):
             self.random()
-        for i in range(N):
+        for i in range(N-1):
             for j in range(N-1):
                 self.b.append(self.list[i][j])
-            self.x.append(self.b)
-        for i in range(N):
+            self.x.extend(self.b)
+        for i in range(N-1):
             for j in range(N-1):
-                self.a.append(self.list[0][i])
-            self.y.append(self.a)
+                self.a.append(self.list[j][i])
+            self.y.extend(self.a)
     def show(self):
         pl.plot(self.x,self.y,'.b')
         
-a=random_walk(step=10)
+a=random_walk(step=100)
 a.random()
 a.run()
 a.show()
