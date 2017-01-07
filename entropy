@@ -1,0 +1,85 @@
+import numpy as np
+import matplotlib.pyplot as pl
+N=9
+L=1
+d=1
+class random_walk:
+    def __init__(self,step):
+        self.t=step
+        #self.x=[]
+        #self.y=[]
+        self.a=[0]
+        self.b=[0]
+        self.p=[0]
+        self.s=[0]
+        self.x1=np.linspace(8,10,16)
+        self.y1=np.linspace(8,10,16)
+        self.list=[[0 for i in range(N)] for j in range(N)]#(N-1)阶数组
+        for i in range(N):
+            for j in range(N):
+                self.list[i][j]=self.list[i][j]+2*j+1
+            self.list[i][j]=self.list[i][j]+2*i
+    def random(self):
+        for i in range(16):
+            rnd1=np.random.uniform(0,1)
+            if rnd1>0.5:
+                self.x1[i]=self.x1[i]+L
+                if self.x1[i]>16:
+                    self.x1[i]=0+16-self.x1[i]
+                else:
+                    pass
+            elif rnd1<0.5:
+                self.x1[i]=self.x1[i]-L
+                if self.x1[i]<0:
+                    self.x1[i]=16+self.x1[i]
+                else:
+                    pass
+            else:
+                pass
+        for j in range(16):
+            rnd=np.random.uniform(0,1)
+            if rnd>0.5:
+                self.y1[j]=self.y1[j]+L
+                if self.y1[i]>16:
+                    self.y1[i]=0+16-self.y1[i]
+                else:
+                    pass
+            elif rnd<0.5:
+                self.y1[j]=self.y1[j]-L
+                if self.y1[i]<0:
+                    self.y1[i]=16+self.y1[i]
+                else:
+                    pass
+            else:
+                pass
+
+    def run(self):
+        for t in range(self.t):
+            self.random()
+        for i in range(N):
+            for j in range(N):
+                for s in range(16):
+                    if self.list[i][j]-d<=self.x1[s]<=self.list[i][j]+d and self.list[i][j]-d<=self.y1[s]<=self.list[i][j]+d:
+                        self.p.append(1/64)
+                    else:
+                        self.p.append(0)
+        for i in range(64):
+            self.s.append(self.s[i-1]-self.p[i]*np.log(self.p[i]))
+#        self.t=self.t+1
+            
+            
+
+    def show(self):
+        pl.plot(np.linspace(1,self.t,self.t),self.s)
+        
+a=random_walk(step=100)#已运行了一次def random()
+a.random()
+a.run()
+a.show()
+pl.xlim(0,10)
+pl.ylim(0,10)
+pl.xlabel('x')
+pl.ylabel('y')
+pl.title('Cream in coffee')
+pl.grid(True)
+pl.show
